@@ -1,5 +1,4 @@
 import commons.Configaration;
-import commons.VerifyTest;
 import org.junit.Before;
 import org.junit.Test;
 import pageObject.CasualDressPage;
@@ -33,15 +32,22 @@ public class CasualDressTest extends Configaration {
         casualDressPage.mouseHoveringOnAnItem();
         casualDressPage.clickOnAddToCart();
         casualDressPage.waitFor(3000);
-        casualDressPage.verifyItemIsAdded();
+        casualDressPage.itemSelectionPage.verifyItemIsAdded();
     }
 
     @Test
     public void verifyItemDescriptionPageIsOpenUponClickingObMoreBtn() throws InterruptedException {
         casualDressPage.mouseHoveringOnAnItem();
-        casualDressPage.clicOnMore();
+        casualDressPage.clickOnMore();
         casualDressPage.waitFor(3000);
         printedDress.verifyPageTitle();
+    }
 
+    @Test
+    public void verifySelectedItemQuantityIsDisplayedOnChart() throws InterruptedException {
+        casualDressPage.mouseHoveringOnAnItem();
+        casualDressPage.clickOnAddToCart();
+        casualDressPage.waitFor(3000);
+        casualDressPage.itemSelectionPage.clickOnProceedToCheckOut();
     }
 }
